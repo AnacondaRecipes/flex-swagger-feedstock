@@ -11,6 +11,7 @@ source:
 build:
   number: 1
   noarch: python
+  skip: True # [not linux64]
   script:
     - {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation --disable-pip-version-check
   entry_points:
@@ -19,12 +20,12 @@ build:
 requirements:
   host:
     - pip
-    - python {{ python_min }}
+    - python {{ python }}
     - setuptools
   run:
     - click >=3.3
     - jsonpointer >=1.7
-    - python >={{ python_min }}
+    - python >={{ python }}
     - pyyaml >=3.11
     - requests >=2.4.3
     - rfc3987 >=1.3.4
@@ -35,7 +36,7 @@ requirements:
 test:
   requires:
     - pip
-    - python {{ python_min }}
+    - python {{ python }}
   imports:
     - flex
     - flex.compat
@@ -76,6 +77,15 @@ about:
   dev_url: https://github.com/pipermerriam/flex
 
 extra:
+  skip-lints:
+    - host_section_needs_exact_pinnings
+    - avoid_noarch
+  anaconda-services:
+    ref: https://anaconda.zendesk.com/agent/tickets/66289
+    reason: needed for prance
+    recipe-maintainers:
+       - bkreider
+
   recipe-maintainers:
     - RohitK89
     - mariusvniekerk
