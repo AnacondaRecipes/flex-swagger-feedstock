@@ -85,7 +85,6 @@ extra:
     reason: needed for prance
     recipe-maintainers:
        - bkreider
-
   recipe-maintainers:
     - RohitK89
     - mariusvniekerk
