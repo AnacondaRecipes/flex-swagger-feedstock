@@ -76,6 +76,7 @@ about:
   doc_url: https://flex-swagger.readthedocs.io/
   dev_url: https://github.com/pipermerriam/flex
 
+
 extra:
   skip-lints:
     - host_section_needs_exact_pinnings
